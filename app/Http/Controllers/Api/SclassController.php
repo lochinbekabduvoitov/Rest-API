@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SclassController extends Controller
 {
@@ -14,7 +15,8 @@ class SclassController extends Controller
      */
     public function index()
     {
-        //
+        $sclasses=DB::table('sclasses')->get();
+        return response()->json($sclasses);
     }
 
 
@@ -41,7 +43,7 @@ class SclassController extends Controller
         //
     }
 
-   
+
 
     /**
      * Update the specified resource in storage.
