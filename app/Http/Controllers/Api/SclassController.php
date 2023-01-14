@@ -40,7 +40,7 @@ class SclassController extends Controller
 
         $insert = DB::table('sclasses')->insert($data);
 
-        return poresponse('Inserted Successfull');
+        return response('Inserted Successfull');
 
     }
 
@@ -67,7 +67,11 @@ class SclassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=[];
+
+        $data['class_name']=$request->class_name;
+        DB::table('sclasses')->where('id',$id)->update($data);
+        return \response('Update Successfull');
     }
 
     /**
