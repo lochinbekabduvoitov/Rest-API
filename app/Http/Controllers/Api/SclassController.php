@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class SclassController extends Controller
 {
@@ -35,8 +37,11 @@ class SclassController extends Controller
 
         $data=[];
         $data['class_name']=$request->class_name;
+        
         $insert = DB::table('sclasses')->insert($data);
+
         return poresponse('Inserted Successfull');
+
     }
 
     /**
