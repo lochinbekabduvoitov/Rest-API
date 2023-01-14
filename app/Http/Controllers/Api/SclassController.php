@@ -37,7 +37,7 @@ class SclassController extends Controller
 
         $data=[];
         $data['class_name']=$request->class_name;
-        
+
         $insert = DB::table('sclasses')->insert($data);
 
         return poresponse('Inserted Successfull');
@@ -52,7 +52,8 @@ class SclassController extends Controller
      */
     public function show($id)
     {
-        //
+        $show = DB::table('sclasses')->where('id',$id)->first();
+        return \response()->json($show);
     }
 
 
@@ -77,6 +78,7 @@ class SclassController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('sclasses')->where('id',$id)->delete();
+        return \response('Delete');
     }
 }
