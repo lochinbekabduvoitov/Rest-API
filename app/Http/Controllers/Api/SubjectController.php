@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Subject;
 
 class SubjectController extends Controller
 {
@@ -35,7 +36,14 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData=$request->validate([
+            'class_id'=> 'required',
+            'subject_name'=> 'required|unique:subjects|max:25',
+            'subject_code'=> 'required|unique:subjects|max:25',
+        ]);
+
+        $subject=Subject::create($request->all());
+        return response('Data Inserted');
     }
 
     /**
