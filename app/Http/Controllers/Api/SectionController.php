@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Section;
 class SectionController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        $section=Section::all();
+        return \response()->json($section);
     }
 
 
@@ -27,7 +28,13 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData=$request->validate([
+            'class_id'=> 'required',
+            'section_name'=> 'required',
+        ]);
+
+        $section = Section::create($request->all());
+        return \response('section create success');
     }
 
     /**
@@ -38,7 +45,8 @@ class SectionController extends Controller
      */
     public function show($id)
     {
-        //
+        $section=Section::findorfail($id);
+        return \response()->json($section);
     }
 
 
@@ -51,7 +59,10 @@ class SectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $section=Section::findorfail($id);
+        $section->update($request->all());
+
+        return \response('Update succesful');
     }
 
     /**
@@ -62,6 +73,7 @@ class SectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Section::where('id',$id)->delete();
+        return \response('Delete success');
     }
 }
