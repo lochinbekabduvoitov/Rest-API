@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\SubjectController;
 use App\Http\Controllers\Api\SectionController;
 use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Route;
+
 
 Route::apiResource('class', SclassController::class);
 Route::apiResource('subject', SubjectController::class);
