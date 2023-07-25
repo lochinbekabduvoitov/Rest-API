@@ -4,8 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Arr;
+use Spatie\Translatable\HasTranslations;
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory , HasTranslations;
+
+    protected $fillable=[
+        'name',
+        'icon',
+        'order'
+    ];
+
+
+    public array $translatable=['name'];
+
+
+    public function products():HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 }
