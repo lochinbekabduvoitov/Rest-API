@@ -4,10 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Value extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
-    protected $fillable=['name','attribute_id','product_id'];
+    protected $fillable = ['name', 'attribute_id', 'product_id'];
+
+    public function attribute()
+    {
+        $this->belongsTo(Attribute::class);
+    }
 }
