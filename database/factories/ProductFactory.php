@@ -18,9 +18,15 @@ class ProductFactory extends Factory
     {
         return [
             'category_id' => rand(1,4),
-            'name'=>fake()->sentence(3),
+            'name'=>[
+                'uz' => fake()->sentence(2),
+                'en' => fake()->sentence(2),
+            ],
             'price' => rand(50000,10000000),
-            'description'=>fake()->paragraph(5)
+            'description'=>[
+                'uz' => fake()->paragraph(5),
+                'en' => fake()->paragraph(5),
+            ]
         ];
     }
 }

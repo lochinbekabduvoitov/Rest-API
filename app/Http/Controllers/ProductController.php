@@ -8,12 +8,10 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        return Product::with('stocks')->get();
     }
 
     /**
@@ -35,9 +33,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        // dd($product);
+        return Product::with('stocks')->find($id);
     }
 
     /**
