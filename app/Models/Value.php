@@ -12,6 +12,8 @@ class Value extends Model
 
     protected $fillable = ['name', 'attribute_id', 'product_id'];
 
+    public array $translatable=['name'];
+
     public function attribute()
     {
         $this->belongsTo(Attribute::class);

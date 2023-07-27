@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('prodeuct_id')->constrained()->cascadeOnDelete();
-            $table->json('attribute')->nullable();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->json('attributes')->nullable();
             $table->integer('quantity')->default(1);
             $table->timestamps();
         });
