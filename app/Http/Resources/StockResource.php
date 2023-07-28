@@ -18,7 +18,11 @@ class StockResource extends JsonResource
             'quantity' => $this->quantity,
         ];
 
+        return $this->getAttribute($result);
+    }
 
+    public function getAttribute($result): array
+    {
         $attributes = json_decode($this->attributes);
 
         foreach ($attributes as   $stockAttribute) {
