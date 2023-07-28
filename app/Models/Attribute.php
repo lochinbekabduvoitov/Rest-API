@@ -11,7 +11,7 @@ class Attribute extends Model
 
     protected $fillable = ['name'];
 
-    public function value()
+    public function values()
     {
         return $this->hasMany(Value::class);
     }
